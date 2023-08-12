@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rastreador de Gastos</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Rastreador de Gastos</h1>
+    </header>
+    <main>
+      <section class="formulario">
+        <h2>Adicionar Despesa</h2>
+        <form action="/adicionar" method="post">
+          <label for="valor">Valor:</label>
+          <input type="number" name="valor" required /><br />
+
+          <label for="categoria">Categoria:</label>
+          <input type="text" name="categoria" required /><br />
+
+          <label for="data">Data:</label>
+          <input type="date" name="data" required /><br />
+
+          <label for="descricao">Descrição:</label>
+          <input type="text" name="descricao" /><br />
+
+          <button type="submit">Adicionar</button>
+        </form>
+      </section>
+      <section class="estatisticas">
+        <h2>Estatísticas de Gastos</h2>
+        <p>Total gasto: R$ {{ "{:.2f}".format(total_geral) }}</p>
+        <p>Gasto por categoria:</p>
+        <ul>
+          {% for categoria, total in total_por_categoria.items() %}
+          <li>{{ categoria }}: R$ {{ "%.2f" % total }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

@@ -730,45 +730,16 @@ section {
     padding: 2rem;
   }
 }
-
 @media (max-width: 768px) {
-  #menu-btn {
-    display: inline-block;
-  }
-
-  .navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    top: 100%;
-    right: -100%;
-    background: #fff;
-    height: calc(100vh - 9.5rem);
-  }
-
-  .header .navbar.active {
-    right: 0;
-  }
-
-  .header .navbar a {
-    color: var(--black);
-    display: block;
-    margin: 1.5rem;
-    padding: 0.5rem;
-    font-size: 2rem;
-    z-index: 2;
-  }
-
-  .header .search-form {
-    width: 90%;
-    right: 2rem;
+  .header .Fundo {
+    display: none; /* Oculta o fundo animado em telas menores que 768px */
   }
 
   .home {
+    grid-template-columns: 1fr; /* Muda para layout de coluna única */
     background-position: left;
     justify-content: center;
+    justify-items: center; /* Adicionado para centralizar o conteúdo */
     text-align: center;
   }
 
@@ -779,11 +750,34 @@ section {
   .home .content p {
     font-size: 1.5rem;
   }
+
+  .home .foto {
+    display: none; /* Esconde a foto em telas pequenas para dar mais espaço */
+  }
 }
 
 @media (max-width: 450px) {
   html {
     font-size: 50%;
+  }
+}
+
+/* --- AJUSTES GRADUAIS PARA O FUNDO ANIMADO --- */
+
+/* Para telas de notebooks e tablets maiores (esconde metade dos ícones) */
+@media (max-width: 1400px) {
+  .header .Fundo div i:nth-child(odd) {
+    display: none;
+  }
+}
+
+/* Para telas de notebooks menores (esconde mais ícones) */
+@media (max-width: 1200px) {
+  .header .Fundo div i:nth-child(n) {
+    display: none; /* Esconde todos */
+  }
+  .header .Fundo div i:nth-child(-n+80) {
+    display: inline-block; /* Mostra apenas os primeiros 80 */
   }
 }
 

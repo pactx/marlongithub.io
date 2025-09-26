@@ -1,21 +1,19 @@
-let navbar = document.querySelector(".navbar");
+// Espera o documento carregar para garantir que todos os elementos existam
+document.addEventListener("DOMContentLoaded", () => {
+  const navbar = document.querySelector(".header .navbar");
+  const menuBtn = document.querySelector("#menu-btn");
 
-document.querySelector("#menu-btn").onclick = () => {
-  navbar.classList.toggle("active");
-  searchForm.classList.remove("active");
-  cartItem.classList.remove("active");
-};
+  // Adiciona a funcionalidade de clique ao botão do menu
+  if (menuBtn && navbar) {
+    menuBtn.onclick = () => {
+      navbar.classList.toggle("active");
+    };
+  }
 
-let cartItem = document.querySelector(".cart-items-container");
-
-document.querySelector("#cart-btn").onclick = () => {
-  cartItem.classList.toggle("active");
-  navbar.classList.remove("active");
-  searchForm.classList.remove("active");
-};
-
-window.onscroll = () => {
-  navbar.classList.remove("active");
-  searchForm.classList.remove("active");
-  cartItem.classList.remove("active");
-};
+  // Fecha o menu quando o usuário rola a página
+  window.onscroll = () => {
+    if (navbar) {
+      navbar.classList.remove("active");
+    }
+  };
+});
